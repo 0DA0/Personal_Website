@@ -1,0 +1,82 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1.4rem 0;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--dark-green);
+  transition: padding 0.3s, box-shadow 0.3s;
+}
+.navbar.scrolled {
+  padding: 0.9rem 0;
+  box-shadow: 0 4px 24px rgba(0,255,65,0.08);
+}
+.navInner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-size: 1.4rem; font-weight: 800;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+  letter-spacing: 0.08em; z-index: 1001;
+  transition: text-shadow 0.3s;
+}
+.logo:hover { text-shadow: 0 0 24px var(--neon-green), 0 0 48px var(--neon-green); }
+
+.navLinks {
+  display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0;
+}
+.navLinks a {
+  position: relative; font-size: 0.9rem; font-weight: 500;
+  color: var(--text-secondary); transition: color 0.3s;
+  letter-spacing: 0.04em;
+}
+.navLinks a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--neon-green);
+  transition: width 0.3s; box-shadow: 0 0 6px var(--neon-green);
+}
+.navLinks a:hover,
+.navLinks a.active {
+  color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green);
+}
+.navLinks a:hover::after,
+.navLinks a.active::after { width: 100%; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 6px; z-index: 1001;
+}
+.hamburger span {
+  width: 24px; height: 2px; background: var(--neon-green);
+  transition: all 0.3s; box-shadow: 0 0 5px var(--neon-green);
+  display: block;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+.mobileMenu {
+  display: none; position: fixed; inset: 0;
+  background: rgba(8,8,8,0.98);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 2.5rem; z-index: 999;
+}
+.mobileMenu.open { display: flex; }
+.mobileMenu a {
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--text-secondary); transition: all 0.3s;
+}
+.mobileMenu a:hover,
+.mobileMenu a.active {
+  color: var(--neon-green); text-shadow: 0 0 20px var(--neon-green);
+}
+
+@media (max-width: 768px) {
+  .navLinks { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 480px) {
+  .navInner { padding: 0 1rem; }
+}
