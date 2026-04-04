@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dogukan.dev/sitemap.xml
+Sitemap: https://dogukanaras.dev/sitemap.xml
