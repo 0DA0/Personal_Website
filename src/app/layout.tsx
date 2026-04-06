@@ -18,13 +18,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Doğukan Aras' }],
   creator: 'Doğukan Aras',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
     url: 'https://dogukanaras.dev',
     title: 'Doğukan Aras | Full Stack Web Developer',
-    description:
-      'Doğukan Aras — Full Stack Web Developer. Angular, Node.js ve Python ile ölçeklenebilir web uygulamaları.',
+    description: 'Doğukan Aras — Full Stack Web Developer. Angular, Node.js ve Python ile ölçeklenebilir web uygulamaları.',
     siteName: 'Doğukan Aras Portfolio',
   },
   twitter: {

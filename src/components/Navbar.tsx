@@ -36,39 +36,21 @@ export default function Navbar() {
       <nav className={`${styles.navbar}${scrolled ? ' ' + styles.scrolled : ''}`}>
         <div className={styles.navInner}>
           <Link href="/" className={styles.logo}>Portfolio</Link>
-
           <ul className={styles.navLinks}>
             {links.map(l => (
               <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className={pathname === l.href ? styles.active : ''}
-                >
-                  {l.label}
-                </Link>
+                <Link href={l.href} className={pathname === l.href ? styles.active : ''}>{l.label}</Link>
               </li>
             ))}
           </ul>
-
-          <button
-            className={`${styles.hamburger}${open ? ' ' + styles.open : ''}`}
-            onClick={() => setOpen(v => !v)}
-            aria-label="Menu"
-          >
+          <button className={`${styles.hamburger}${open ? ' ' + styles.open : ''}`} onClick={() => setOpen(v => !v)} aria-label="Menu">
             <span /><span /><span />
           </button>
         </div>
       </nav>
-
       <div className={`${styles.mobileMenu}${open ? ' ' + styles.open : ''}`}>
         {links.map(l => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className={pathname === l.href ? styles.active : ''}
-          >
-            {l.label}
-          </Link>
+          <Link key={l.href} href={l.href} className={pathname === l.href ? styles.active : ''}>{l.label}</Link>
         ))}
       </div>
     </>
