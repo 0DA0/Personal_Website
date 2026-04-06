@@ -11,16 +11,20 @@ function requireAuth(req: NextRequest) {
   return !!req.cookies.get('admin_token')?.value;
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   if (!requireAuth(req)) return NextResponse.json({ message: 'Yetkisiz' }, { status: 401 });
 
   try {
+    const { id } = await params;
     const body = await req.json();
     const { title, description, technologies, github, demo, order } = body;
 
     const col = await getCollection();
     await col.updateOne(
-      { _id: new ObjectId(params.id) },
+      { _id: new ObjectId(id) },
       {
         $set: {
           title: title?.trim(),
@@ -41,12 +45,16 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   if (!requireAuth(req)) return NextResponse.json({ message: 'Yetkisiz' }, { status: 401 });
 
   try {
+    const { id } = await params;
     const col = await getCollection();
-    await col.deleteOne({ _id: new ObjectId(params.id) });
+    await col.deleteOne({ _id: new ObjectId(id) });
     return NextResponse.json({ message: 'Silindi' });
   } catch (err) {
     console.error('DELETE /api/projects/[id] error:', err);
