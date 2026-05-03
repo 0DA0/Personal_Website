@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Projeler',
   description: "Doğukan'ın geliştirdiği projeler — Angular, Node.js, React, Python ve daha fazlasıyla yapılmış web uygulamaları.",
